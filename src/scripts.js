@@ -16,11 +16,11 @@ class ToDoList
     END OF PART 5 - TEST AND DEBUG YOUR CODE - You're done writing code
     */
    
-        this.tasks= [
-            {task: 'Go to Doctor', isComplete: false},
-            {task: 'Do Gardening', isComplete: true},
-            {task: 'Renew Library Account', isComplete: false}
-        ];
+        this.tasks= JSON.parse(localStorage.getItem('TASKS'))
+        if(!this.tasks)
+        {
+            this.tasks=[{task:'a task',isComplete:false}];
+        }
         this.loadTasks=this.loadTasks.bind(this);
         this.loadTasks();
         this.toggleTaskStatus=this.toggleTaskStatus.bind(this);
@@ -30,6 +30,14 @@ class ToDoList
         let addBtn=document.getElementById("add");
         addBtn.onclick=this.addTaskClick.bind(this);
         this.addTaskClick=this.addTaskClick.bind(this);
+        document.getElementById('addTask').addEventListener('keypress',event=>
+        {
+            if(event.keyCode===13)
+            {
+                this.addTask(event.target.value)
+                event.target.value="";
+            }
+        } )
     
 
 
