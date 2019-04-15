@@ -1,7 +1,9 @@
 class ToDoList
 {
+    
     constructor()
     {
+       
         /*
     PART 5 - Local Storage
     -   Load the task list from the 'TASKS' element from local storage
@@ -57,7 +59,9 @@ class ToDoList
                 ${task.task}
               </div>
               <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 delete-icon-area">
-                <a class="" href="/" onclick="toDo.deleteTask(event,${index})"><i id="deleteTask" class="delete-icon glyphicon glyphicon-trash"></i></a>
+              <a class="" href="/" onclick="toDo.upTask(event,${index})"><i id="upTask" class="up-icon glyphicon glyphicon-arrow-up"></i></a>
+                <a class="" href="/" onclick="toDo.downTask(event,${index})"><i id="downTask" class="down-icon glyphicon glyphicon-arrow-down"></i></a>
+                <a class="" href="/" onclick="toDo.deleteTask(event,${index})"><i id="deleteTask" class="delete-icon glyphicon glyphicon-trash"></i></a>               
               </div>
             </div>
           </li>
@@ -95,7 +99,7 @@ class ToDoList
     {
         let parentDiv=document.getElementById('addTask').parentElement;
         //let text=document.getElementById("addtask").value;     
-        if(task===" ")
+        if(task==="")
         {
             parentDiv.classList.add('has-error')
         }
@@ -114,6 +118,17 @@ class ToDoList
         let target=document.getElementById('addTask');
         this.addTask(target.value);
         target.value="";
+    }
+    upTask(event,index)
+    {   
+        event.preventDefault();
+        arrayMove(this.tasks, index, index-1);
+        this.loadTasks();
+
+    }
+    downTask()
+    {
+
     }
 
 }
