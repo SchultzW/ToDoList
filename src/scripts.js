@@ -59,8 +59,6 @@ class ToDoList
                 ${task.task}
               </div>
               <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 delete-icon-area">
-              <a class="" href="/" onclick="toDo.upTask(event,${index})"><i id="upTask" class="up-icon glyphicon glyphicon-arrow-up"></i></a>
-                <a class="" href="/" onclick="toDo.downTask(event,${index})"><i id="downTask" class="down-icon glyphicon glyphicon-arrow-down"></i></a>
                 <a class="" href="/" onclick="toDo.deleteTask(event,${index})"><i id="deleteTask" class="delete-icon glyphicon glyphicon-trash"></i></a>               
               </div>
             </div>
@@ -118,18 +116,7 @@ class ToDoList
         let target=document.getElementById('addTask');
         this.addTask(target.value);
         target.value="";
-    }
-    upTask(event,index)
-    {   
-        event.preventDefault();
-        arrayMove(this.tasks, index, index-1);
-        this.loadTasks();
-
-    }
-    downTask()
-    {
-
-    }
+    } 
 
 }
 
@@ -138,4 +125,3 @@ class ToDoList
 
 let toDo;
 window.onload=()=>{toDo=new ToDoList();};
-
